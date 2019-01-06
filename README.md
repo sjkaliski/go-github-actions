@@ -1,5 +1,7 @@
 # go-github-actions
 
+A collection of [GitHub Actions](https://github.com/features/actions) for use in [Golang](https://golang.org/) projects.
+
 ## Actions
 
 ### gofmt
@@ -17,3 +19,5 @@ action "gofmt" {
   }
 }
 ```
+
+To learn more about `gofmt`, visit the [official docs](https://golang.org/cmd/gofmt/).
