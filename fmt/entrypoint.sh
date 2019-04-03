@@ -8,6 +8,11 @@ IGNORED_DIRS=""
 if [ -n "${GO_IGNORE_DIRS}" ]; then
   IGNORE_DIRS_ARR=($GO_IGNORE_DIRS)
   for DIR in "${IGNORE_DIRS_ARR[@]}"; do
+    # If the directory doesn't end in "/*", add it
+    if [[ ! "${DIR}" =~ .*\/\*$ ]]; then
+      DIR="${DIR}/*"
+    fi
+    # Append to our list of directories to ignore
    IGNORED_DIRS+=" -not -path \"${DIR}\""
   done
 fi
