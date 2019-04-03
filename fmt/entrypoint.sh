@@ -14,7 +14,7 @@ fi
 
 # Check if any files are not formatted.
 set +e
-test -z "$(gofmt -l -d -e $(find . -type f -iname '*.go'))"
+test -z "$(gofmt -l -d -e $(find . -type f -iname '*.go' ${IGNORED_DIRS}))"
 SUCCESS=$?
 set -e
 
