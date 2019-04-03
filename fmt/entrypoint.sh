@@ -3,6 +3,15 @@ set -e
 
 cd "${GO_WORKING_DIR:-.}"
 
+# Build ignored directories
+IGNORED_DIRS=""
+if [ -n "${GO_IGNORE_DIRS}" ]; then
+  IGNORE_DIRS_ARR=($GO_IGNORE_DIRS)
+  for DIR in "${IGNORE_DIRS_ARR[@]}"; do
+   IGNORED_DIRS+=" -not -path \"${DIR}\""
+  done
+fi
+
 # Check if any files are not formatted.
 set +e
 test -z "$(gofmt -l -d -e $(find . -type f -iname '*.go'))"
