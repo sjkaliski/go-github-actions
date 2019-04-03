@@ -25,7 +25,7 @@ CHECK_FILES=$(eval ${FIND_EXEC})
 
 # Check if any files are not formatted.
 set +e
-test -z "$(gofmt -l -d -e $(find . -type f -iname '*.go' ${IGNORED_DIRS}))"
+test -z "$(gofmt -l -d -e ${CHECK_FILES})"
 SUCCESS=$?
 set -e
 
@@ -36,16 +36,16 @@ fi
 
 # Get list of unformatted files.
 set +e
-FILES=$(sh -c "gofmt -l . $*" 2>&1)
-echo "$FILES"
+ISSUE_FILES=$(gofmt -l ${CHECK_FILES})
+echo "${ISSUE_FILES}"
 set -e
 
 # Iterate through each unformatted file.
 OUTPUT=""
-for file in $FILES; do
-DIFF=$(gofmt -d -e "$file")
+for FILE in $ISSUE_FILES; do
+DIFF=$(gofmt -d -e "${FILE}")
 OUTPUT="$OUTPUT
-\`$file\`
+\`${FILE}\`
 
 \`\`\`diff
 $DIFF
