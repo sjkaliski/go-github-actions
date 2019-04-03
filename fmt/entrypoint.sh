@@ -13,7 +13,7 @@ if [ -n "${GO_IGNORE_DIRS}" ]; then
       DIR="${DIR}/*"
     fi
     # Append to our list of directories to ignore
-   IGNORED_DIRS+=" -not -path \"${DIR}\""
+    IGNORED_DIRS+=" -not -path \"${DIR}\""
   done
 fi
 
