@@ -17,6 +17,12 @@ if [ -n "${GO_IGNORE_DIRS}" ]; then
   done
 fi
 
+# Use an eval to avoid glob expansion
+FIND_EXEC="find . -type f -iname '*.go' ${IGNORED_DIRS}"
+
+# Get a list of files that we are interested in
+CHECK_FILES=$(eval ${FIND_EXEC})
+
 # Check if any files are not formatted.
 set +e
 test -z "$(gofmt -l -d -e $(find . -type f -iname '*.go' ${IGNORED_DIRS}))"
