@@ -10,6 +10,7 @@ action "gofmt" {
 
   env {
     GO_WORKING_DIR = "./path/to/go/files"
+    GO_IGNORE_DIRS = "./vendor"
   }
 }
 ```
