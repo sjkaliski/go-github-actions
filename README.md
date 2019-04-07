@@ -10,12 +10,13 @@ Runs `gofmt` on files in the directory. Fails if any file is not properly format
 
 ```hcl
 action "gofmt" {
-  uses    = "sjkaliski/go-github-actions/fmt@v0.2.0"
+  uses    = "sjkaliski/go-github-actions/fmt@v0.4.0"
   needs   = "previous-action"
   secrets = ["GITHUB_TOKEN"]
 
   env {
     GO_WORKING_DIR = "./path/to/go/files"
+    GO_IGNORE_DIRS = "./vendor"
   }
 }
 ```
@@ -28,7 +29,7 @@ Runs `golint` on files in the directory. Failes if any file fails lint checks.
 
 ```hcl
 action "golint" {
-  uses    = "sjkaliski/go-github-actions/lint@v0.2.0"
+  uses    = "sjkaliski/go-github-actions/lint@v0.4.0"
   needs   = "previous-action"
   secrets = ["GITHUB_TOKEN"]
 

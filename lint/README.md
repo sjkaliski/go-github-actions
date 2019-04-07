@@ -6,7 +6,7 @@ Use `GO_LINT_PATHS` to specify directories to evaluate. Defaults to `./...`.
 
 ```hcl
 action "golint" {
-  uses    = "sjkaliski/go-github-actions/lint@v0.2.0"
+  uses    = "sjkaliski/go-github-actions/lint@v0.4.0"
   needs   = "previous-action"
   secrets = ["GITHUB_TOKEN"]
 
