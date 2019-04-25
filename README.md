@@ -4,11 +4,18 @@ A collection of [GitHub Actions](https://github.com/features/actions) for use in
 
 ## Actions
 
+Currently there is support for `gofmt` and `golint`. If triggered by a `pull_request`, any failure will be posted back to the PR as a comment.
+
 ### gofmt
 
 Runs `gofmt` on files in the directory. Fails if any file is not properly formatted.
 
 ```hcl
+workflow "Go" {
+  on = "pull_request"
+  resolves = ["gofmt"]
+}
+
 action "gofmt" {
   uses    = "sjkaliski/go-github-actions/fmt@v0.4.0"
   needs   = "previous-action"
@@ -25,9 +32,14 @@ To learn more about `gofmt`, visit the [official docs](https://golang.org/cmd/go
 
 ### golint
 
-Runs `golint` on files in the directory. Failes if any file fails lint checks.
+Runs `golint` on files in the directory. Fails if any file fails lint checks.
 
 ```hcl
+workflow "Go" {
+  on = "pull_request"
+  resolves = ["golint"]
+}
+
 action "golint" {
   uses    = "sjkaliski/go-github-actions/lint@v0.4.0"
   needs   = "previous-action"
