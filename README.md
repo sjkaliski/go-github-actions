@@ -17,7 +17,7 @@ workflow "Go" {
 }
 
 action "gofmt" {
-  uses    = "sjkaliski/go-github-actions/fmt@v0.5.0"
+  uses    = "sjkaliski/go-github-actions/fmt@v1.0.0"
   needs   = "previous-action"
   secrets = ["GITHUB_TOKEN"]
 
@@ -41,7 +41,7 @@ workflow "Go" {
 }
 
 action "golint" {
-  uses    = "sjkaliski/go-github-actions/lint@v0.5.0"
+  uses    = "sjkaliski/go-github-actions/lint@v1.0.0"
   needs   = "previous-action"
   secrets = ["GITHUB_TOKEN"]
 
